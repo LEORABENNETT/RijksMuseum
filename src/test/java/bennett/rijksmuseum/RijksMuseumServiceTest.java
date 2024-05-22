@@ -10,21 +10,21 @@ public class RijksMuseumServiceTest {
 
     private static class TestRijksMuseumService implements RijksMuseumService {
         @Override
-        public Single<CurrentCollection> currentCollection(String appId, String PageNumber) {
+        public Single<CurrentCollection> currentCollection(String appId, String pageNumber) {
             // Simulate API call and return a mock response
             CurrentCollection mockCollection = new CurrentCollection();
             return Single.just(mockCollection);
         }
 
         @Override
-        public Single<CurrentCollection> getFromPageNumber(String appId, String Query) {
+        public Single<CurrentCollection> getFromPageNumber(String appId, String query) {
             // Simulate API call and return a mock response
             CurrentCollection mockCollection = new CurrentCollection();
             return Single.just(mockCollection);
         }
 
         @Override
-        public Single<CurrentCollection> getFromQuery(String appId, String Artist, String PageNumber) {
+        public Single<CurrentCollection> getFromQuery(String appId, String artist, String pageNumber) {
             // Simulate API call and return a mock response
             CurrentCollection mockCollection = new CurrentCollection();
             return Single.just(mockCollection);
