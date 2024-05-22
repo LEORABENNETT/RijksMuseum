@@ -33,7 +33,7 @@ public class RijksMuseumServiceTest {
     }
 
     @Test
-    public void CurrentCollection() {
+    public void currentCollection() {
         RijksMuseumService service = new TestRijksMuseumService();
 
         Single<CurrentCollection> single = service.currentCollection(ApiKey.APIKEY, "1");
@@ -43,7 +43,7 @@ public class RijksMuseumServiceTest {
     }
 
     @Test
-    public void GetFromPageNumber() {
+    public void getFromPageNumber() {
         RijksMuseumService service = new TestRijksMuseumService();
 
         Single<CurrentCollection> single = service.getFromPageNumber(ApiKey.APIKEY, "Rembrandt");
@@ -53,7 +53,7 @@ public class RijksMuseumServiceTest {
     }
 
     @Test
-    public void GetFromQuery() {
+    public void getFromQuery() {
         RijksMuseumService service = new TestRijksMuseumService();
 
         Single<CurrentCollection> single = service.getFromQuery(ApiKey.APIKEY, "Vermeer", "1");
