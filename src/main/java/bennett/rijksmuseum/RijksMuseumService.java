@@ -10,8 +10,6 @@ import retrofit2.http.Query;
  */
 public interface RijksMuseumService {
 
-    // api key = jb32sYqU
-
     @GET("/api/en/collection")
     Single<CurrentCollection> currentCollection(
             @Query("appid") String appId,

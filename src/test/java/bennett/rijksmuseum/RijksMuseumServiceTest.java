@@ -1,6 +1,7 @@
 package bennett.rijksmuseum;
 
 import bennett.rijksmuseum.json.CurrentCollection;
+import com.andrewoid.ApiKey;
 import io.reactivex.rxjava3.core.Single;
 import org.junit.Test;
 
@@ -32,30 +33,30 @@ public class RijksMuseumServiceTest {
     }
 
     @Test
-    public void testCurrentCollection() {
+    public void CurrentCollection() {
         RijksMuseumService service = new TestRijksMuseumService();
 
-        Single<CurrentCollection> single = service.currentCollection("jb32sYqU", "1");
+        Single<CurrentCollection> single = service.currentCollection(ApiKey.APIKEY, "1");
 
         // Assert that the returned Single is not null
         assertEquals(true, single != null);
     }
 
     @Test
-    public void testGetFromPageNumber() {
+    public void GetFromPageNumber() {
         RijksMuseumService service = new TestRijksMuseumService();
 
-        Single<CurrentCollection> single = service.getFromPageNumber("jb32sYqU", "Rembrandt");
+        Single<CurrentCollection> single = service.getFromPageNumber(ApiKey.APIKEY, "Rembrandt");
 
         // Assert that the returned Single is not null
         assertEquals(true, single != null);
     }
 
     @Test
-    public void testGetFromQuery() {
+    public void GetFromQuery() {
         RijksMuseumService service = new TestRijksMuseumService();
 
-        Single<CurrentCollection> single = service.getFromQuery("jb32sYqU", "Vermeer", "1");
+        Single<CurrentCollection> single = service.getFromQuery(ApiKey.APIKEY, "Vermeer", "1");
 
         // Assert that the returned Single is not null
         assertEquals(true, single != null);
