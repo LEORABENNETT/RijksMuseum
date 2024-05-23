@@ -5,5 +5,11 @@ import bennett.rijksmuseum.json.ArtObjects;
 
 public class CurrentCollection {
 
-    ArtObjects artObjects;
+    public ArtObjects[] getArtObjects() {
+        return artObjects;
+    }
+
+    ArtObjects [] artObjects;
+
+
 }

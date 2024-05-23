@@ -2,63 +2,68 @@ package bennett.rijksmuseum;
 
 import bennett.rijksmuseum.json.CurrentCollection;
 import com.andrewoid.ApiKey;
-import io.reactivex.rxjava3.core.Single;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class RijksMuseumServiceTest {
+class RijksMuseumServiceTest {
 
-    private static class TestRijksMuseumService implements RijksMuseumService {
-        @Override
-        public Single<CurrentCollection> currentCollection(String appId, String pageNumber) {
-            // Simulate API call and return a mock response
-            CurrentCollection mockCollection = new CurrentCollection();
-            return Single.just(mockCollection);
-        }
+    @Test
+    void getFromPageNumber() {
+        // given
+        ApiKey apiKey = new ApiKey();
+        String keyString = apiKey.get();
+        RijksMuseumService service = new RijksMuseumServiceFactory().getService();
 
-        @Override
-        public Single<CurrentCollection> getFromPageNumber(String appId, String query) {
-            // Simulate API call and return a mock response
-            CurrentCollection mockCollection = new CurrentCollection();
-            return Single.just(mockCollection);
-        }
+        // when
+        CurrentCollection currentCollection = service.getFromPageNumber(
+                keyString,
+                2
+        ).blockingGet();
 
-        @Override
-        public Single<CurrentCollection> getFromQuery(String appId, String artist, String pageNumber) {
-            // Simulate API call and return a mock response
-            CurrentCollection mockCollection = new CurrentCollection();
-            return Single.just(mockCollection);
-        }
+        // then
+        assertNotNull(currentCollection);
+        assertNotNull(currentCollection.getArtObjects());
     }
 
     @Test
-    public void currentCollection() {
-        RijksMuseumService service = new TestRijksMuseumService();
+    void getFromQuery() {
+        // given
+        ApiKey apiKey = new ApiKey();
+        String keyString = apiKey.get();
+        RijksMuseumService service = new RijksMuseumServiceFactory().getService();
 
-        Single<CurrentCollection> single = service.currentCollection(ApiKey.APIKEY, "1");
+        // when
+        CurrentCollection currentCollection = service.getFromQuery(
+                keyString,
+                "",
+                2
+        ).blockingGet();
 
-        // Assert that the returned Single is not null
-        assertEquals(true, single != null);
+
+        // then
+        assertNotNull(currentCollection);
+        assertNotNull(currentCollection.getArtObjects());
     }
 
     @Test
-    public void getFromPageNumber() {
-        RijksMuseumService service = new TestRijksMuseumService();
+    void getFromArtist() {
+        // given
+        ApiKey apiKey = new ApiKey();
+        String keyString = apiKey.get();
+        RijksMuseumService service = new RijksMuseumServiceFactory().getService();
 
-        Single<CurrentCollection> single = service.getFromPageNumber(ApiKey.APIKEY, "Rembrandt");
+        // when
+        CurrentCollection currentCollection = service.getFromArtist(
+                keyString,
+                "",
+                2,
+                "Michael Angelo"
+        ).blockingGet();
 
-        // Assert that the returned Single is not null
-        assertEquals(true, single != null);
-    }
 
-    @Test
-    public void getFromQuery() {
-        RijksMuseumService service = new TestRijksMuseumService();
-
-        Single<CurrentCollection> single = service.getFromQuery(ApiKey.APIKEY, "Vermeer", "1");
-
-        // Assert that the returned Single is not null
-        assertEquals(true, single != null);
+        // then
+        assertNotNull(currentCollection);
+        assertNotNull(currentCollection.getArtObjects());
     }
 }
