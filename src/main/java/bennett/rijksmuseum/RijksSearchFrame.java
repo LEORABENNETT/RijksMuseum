@@ -122,8 +122,8 @@ public class RijksSearchFrame extends JFrame {
             for (int i = 0; i < artObjectsArray.length(); i++) {
                 JSONObject artObjectJson = artObjectsArray.getJSONObject(i);
                 String title = artObjectJson.getString("title");
-                String artist = artObjectJson.has("principalOrFirstMaker") ?
-                        artObjectJson.getString("principalOrFirstMaker") : "Unknown";
+                String artist = artObjectJson.has("principalOrFirstMaker")
+                        ? artObjectJson.getString("principalOrFirstMaker") : "Unknown";
                 String imageUrl = artObjectJson.getJSONObject("webImage").getString("url");
 
                 ArtObject artObject = new ArtObject();
