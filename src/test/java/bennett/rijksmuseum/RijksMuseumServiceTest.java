@@ -24,8 +24,8 @@ class RijksMuseumServiceTest {
 
         // then
         assertNotNull(currentCollection);
-        assertNotNull(currentCollection.getArtObjects());
-        ArtObject artObject = currentCollection.getArtObjects()[0];
+        assertNotNull(currentCollection.getArtObject());
+        ArtObject artObject = currentCollection.getArtObject()[0];
         assertNotNull(artObject.longTitle);
         assertNotNull(artObject.title);
         assertNotNull(artObject.principalOrFirstMaker);
@@ -49,8 +49,8 @@ class RijksMuseumServiceTest {
 
         // then
         assertNotNull(currentCollection);
-        assertNotNull(currentCollection.getArtObjects());
-        ArtObject artObject = currentCollection.getArtObjects()[0];
+        assertNotNull(currentCollection.getArtObject());
+        ArtObject artObject = currentCollection.getArtObject()[0];
         assertNotNull(artObject.longTitle);
         assertNotNull(artObject.title);
         assertNotNull(artObject.principalOrFirstMaker);
@@ -74,8 +74,8 @@ class RijksMuseumServiceTest {
 
         // then
         assertNotNull(currentCollection);
-        assertNotNull(currentCollection.getArtObjects());
-        ArtObject artObject = currentCollection.getArtObjects()[0];
+        assertNotNull(currentCollection.getArtObject());
+        ArtObject artObject = currentCollection.getArtObject()[0];
         assertNotNull(artObject.longTitle);
         assertNotNull(artObject.title);
         assertNotNull(artObject.principalOrFirstMaker);

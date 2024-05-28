@@ -2,7 +2,7 @@ package bennett.rijksmuseum.json;
 
 public class CurrentCollection {
 
-    public ArtObject[] getArtObjects() {
+    public ArtObject[] getArtObject() {
         return artObjects;
     }
 
