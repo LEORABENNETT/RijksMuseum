@@ -1,6 +1,6 @@
 package bennett.rijksmuseum;
 
-import bennett.rijksmuseum.json.ArtObjects;
+import bennett.rijksmuseum.json.ArtObject;
 import bennett.rijksmuseum.json.CurrentCollection;
 import com.andrewoid.ApiKey;
 import org.junit.jupiter.api.Test;
@@ -25,7 +25,12 @@ class RijksMuseumServiceTest {
         // then
         assertNotNull(currentCollection);
         assertNotNull(currentCollection.getArtObjects());
-        ArtObjects artObject = currentCollection.getArtObjects()[0];
+        ArtObject artObject = currentCollection.getArtObjects()[0];
+        assertNotNull(artObject.longTitle);
+        assertNotNull(artObject.title);
+        assertNotNull(artObject.principalOrFirstMaker);
+        assertNotNull(artObject.webImage);
+        assertNotNull(artObject.webImage.url);
     }
 
     @Test
@@ -45,7 +50,12 @@ class RijksMuseumServiceTest {
         // then
         assertNotNull(currentCollection);
         assertNotNull(currentCollection.getArtObjects());
-        ArtObjects artObject = currentCollection.getArtObjects()[0];
+        ArtObject artObject = currentCollection.getArtObjects()[0];
+        assertNotNull(artObject.longTitle);
+        assertNotNull(artObject.title);
+        assertNotNull(artObject.principalOrFirstMaker);
+        assertNotNull(artObject.webImage);
+        assertNotNull(artObject.webImage.url);
     }
 
     @Test
@@ -59,12 +69,17 @@ class RijksMuseumServiceTest {
         CurrentCollection currentCollection = service.getFromArtist(
                 keyString,
                 2,
-                "Michel angelo"
+                "Michelangelo"
         ).blockingGet();
 
         // then
         assertNotNull(currentCollection);
         assertNotNull(currentCollection.getArtObjects());
-        ArtObjects artObject = currentCollection.getArtObjects()[0];
+        ArtObject artObject = currentCollection.getArtObjects()[0];
+        assertNotNull(artObject.longTitle);
+        assertNotNull(artObject.title);
+        assertNotNull(artObject.principalOrFirstMaker);
+        assertNotNull(artObject.webImage);
+        assertNotNull(artObject.webImage.url);
     }
 }

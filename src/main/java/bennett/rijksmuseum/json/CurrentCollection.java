@@ -1,14 +1,12 @@
 package bennett.rijksmuseum.json;
 
-import bennett.rijksmuseum.json.ArtObjects;
-
 public class CurrentCollection {
 
-    public ArtObjects[] getArtObjects() {
+    public ArtObject[] getArtObjects() {
         return artObjects;
     }
 
-    ArtObjects [] artObjects;
+    ArtObject[] artObjects;
 
 
 }

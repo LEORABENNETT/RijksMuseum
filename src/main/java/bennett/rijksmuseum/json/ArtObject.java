@@ -1,6 +1,6 @@
 package bennett.rijksmuseum.json;
 
-public class ArtObjects {
+public class ArtObject {
 
     // title, longTitle, webImage and principalOrFirstMaker
     public String title;
@@ -9,6 +9,6 @@ public class ArtObjects {
 
     public String longTitle;
 
-    ArtImage webImage;
+    public ArtImage webImage;
 
 }
