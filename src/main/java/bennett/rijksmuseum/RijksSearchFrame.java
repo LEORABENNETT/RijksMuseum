@@ -141,7 +141,8 @@ public class RijksSearchFrame extends JFrame {
                 ArtObject artObject = artObjects.get(i);
                 resultLabels[i].setText("");
                 resultLabels[i].setIcon(downloadImage(artObject.webImage.url));
-                resultLabels[i].setToolTipText("<html>" + artObject.title + "<br>" + artObject.principalOrFirstMaker + "</html>");
+                resultLabels[i].setToolTipText("<html>" + artObject.title + "<br>"
+                        + artObject.principalOrFirstMaker + "</html>");
                 resultLabels[i].addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
