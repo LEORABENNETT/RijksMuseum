@@ -1,5 +1,6 @@
 package bennett.rijksmuseum;
 
+import bennett.rijksmuseum.json.ArtObjects;
 import bennett.rijksmuseum.json.CurrentCollection;
 import com.andrewoid.ApiKey;
 import org.junit.jupiter.api.Test;
@@ -24,6 +25,7 @@ class RijksMuseumServiceTest {
         // then
         assertNotNull(currentCollection);
         assertNotNull(currentCollection.getArtObjects());
+        ArtObjects artObject = currentCollection.getArtObjects()[0];
     }
 
     @Test
@@ -40,10 +42,10 @@ class RijksMuseumServiceTest {
                 2
         ).blockingGet();
 
-
         // then
         assertNotNull(currentCollection);
         assertNotNull(currentCollection.getArtObjects());
+        ArtObjects artObject = currentCollection.getArtObjects()[0];
     }
 
     @Test
@@ -56,14 +58,13 @@ class RijksMuseumServiceTest {
         // when
         CurrentCollection currentCollection = service.getFromArtist(
                 keyString,
-                "",
                 2,
-                "Michael Angelo"
+                "Michel angelo"
         ).blockingGet();
-
 
         // then
         assertNotNull(currentCollection);
         assertNotNull(currentCollection.getArtObjects());
+        ArtObjects artObject = currentCollection.getArtObjects()[0];
     }
 }

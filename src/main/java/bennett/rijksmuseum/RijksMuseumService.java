@@ -26,7 +26,6 @@ public interface RijksMuseumService {
     @GET("/api/en/collection")
     Single<CurrentCollection> getFromArtist(
             @Query("key") String apiKey,
-            @Query("q") String query,
             @Query("p") int pageNumber,
             @Query("involvedMaker") String artist
             );
