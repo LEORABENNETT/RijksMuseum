@@ -3,6 +3,7 @@ package bennett.rijksmuseum;
 import bennett.rijksmuseum.json.ArtObject;
 import bennett.rijksmuseum.json.CurrentCollection;
 import com.andrewoid.ApiKey;
+import hu.akarnokd.rxjava3.swing.SwingSchedulers;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import java.net.URL;
 
@@ -24,7 +25,9 @@ public class RijksSearchFrame extends JFrame {
 
     public RijksMuseumService rijksMuseumService;
 
-    public RijksSearchFrame() {
+    public RijksSearchFrame(RijksMuseumService rijksMuseumService) {
+        this.rijksMuseumService = rijksMuseumService;
+
         setTitle("Rijksmuseum Search");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,15 +85,17 @@ public class RijksSearchFrame extends JFrame {
         if (query.isEmpty()) {
             rijksMuseumService.getFromPageNumber(keyString, currentPage)
                     .subscribeOn(Schedulers.io())
-                    .observeOn(Schedulers.from(SwingUtilities::invokeLater))
-                    .subscribe(this::handleResponse, throwable ->
-                            showError(throwable.getMessage()));
+                    .observeOn(SwingSchedulers.edt())
+                    .subscribe(
+                            this::handleResponse,
+                            Throwable::printStackTrace);
         } else {
             rijksMuseumService.getFromQuery(keyString, query, currentPage)
                     .subscribeOn(Schedulers.io())
-                    .observeOn(Schedulers.from(SwingUtilities::invokeLater))
-                    .subscribe(this::handleResponse, throwable ->
-                            showError(throwable.getMessage()));
+                    .observeOn(SwingSchedulers.edt())
+                    .subscribe(
+                            this::handleResponse,
+                            Throwable::printStackTrace);
         }
     }
 
@@ -142,6 +147,6 @@ public class RijksSearchFrame extends JFrame {
 
     public static void main(String[] args) {
         RijksMuseumService rijksMuseumService = new RijksMuseumServiceFactory().getService();
-        new RijksSearchFrame().setVisible(true);
+        new RijksSearchFrame(rijksMuseumService).setVisible(true);
     }
 }
