@@ -5,6 +5,9 @@ import bennett.rijksmuseum.json.CurrentCollection;
 import com.andrewoid.ApiKey;
 import hu.akarnokd.rxjava3.swing.SwingSchedulers;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.net.URL;
 
 
@@ -75,6 +78,14 @@ public class RijksSearchFrame extends JFrame {
             }
         });
 
+        searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentPage = 1;
+                imageSearch();
+            }
+        });
+
         add(resultsPanel, BorderLayout.CENTER);
     }
 
@@ -100,6 +111,7 @@ public class RijksSearchFrame extends JFrame {
     }
 
     // Handle response method
+
     private void handleResponse(CurrentCollection currentCollection) {
         resultsPanel.removeAll();
 
@@ -108,6 +120,13 @@ public class RijksSearchFrame extends JFrame {
             downloadAndSetImage(label, artObject.getImageUrl());
             label.setToolTipText("<html>" + artObject.getTitle() + "<br>"
                     + artObject.getArtist() + "</html>");
+            label.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    new ImageFrame(artObject.getImageUrl(), artObject.getArtist(),
+                            artObject.getTitle()).setVisible(true);
+                }
+            });
             resultsPanel.add(label);
         }
 
