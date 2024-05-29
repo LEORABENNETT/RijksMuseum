@@ -18,7 +18,6 @@ artist by entering the artist's name in the search field.
 Interactive Results: The application displays the search results as a 
 grid of thumbnails, allowing users to click on individual artworks to view them in more detail.
 
-
- ![screenshot1.png](..%2F..%2FDesktop%2Fscreenshot1.png)
+![Rijks Search Frame](img.png)
  
-![screenshot2.png](..%2F..%2FDesktop%2Fscreenshot2.png)
+![Image Frame](img_1.png)
