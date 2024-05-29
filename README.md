@@ -19,4 +19,6 @@ Interactive Results: The application displays the search results as a
 grid of thumbnails, allowing users to click on individual artworks to view them in more detail.
 
 
+ ![screenshot1.png](..%2F..%2FDesktop%2Fscreenshot1.png)
  
+![screenshot2.png](..%2F..%2FDesktop%2Fscreenshot2.png)
