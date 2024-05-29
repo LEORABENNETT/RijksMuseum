@@ -10,8 +10,8 @@ import java.io.IOException;
 public class ImageFrame extends JFrame {
     private JLabel imageLabel;
 
-    public ImageFrame(String imageUrl) {
-        setTitle("Image Viewer");
+    public ImageFrame(String imageUrl, String artist, String title) {
+        setTitle(title + " by " + artist);
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -33,14 +33,5 @@ public class ImageFrame extends JFrame {
             e.printStackTrace();
             imageLabel.setText("Failed to load image");
         }
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new ImageFrame("https://example.com/path/to/image.jpg").setVisible(true);
-            }
-        });
     }
 }

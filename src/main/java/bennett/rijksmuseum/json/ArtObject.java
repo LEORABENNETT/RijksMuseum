@@ -11,4 +11,20 @@ public class ArtObject {
 
     public ArtImage webImage;
 
+    public String getArtist() {
+        return principalOrFirstMaker;
+    }
+
+    public String getImageUrl() {
+        return webImage != null ? webImage.getUrl() : null;
+    }
+
+    public ArtImage getWebImage() {
+        return webImage;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
 }
